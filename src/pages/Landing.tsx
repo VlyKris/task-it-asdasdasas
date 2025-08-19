@@ -1,32 +1,41 @@
 import { AuthButton } from "@/components/auth/AuthButton";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, Plus, Star, Zap } from "lucide-react";
+import { CheckCircle, Clock, Plus, Star, Zap, Heart, Skull, Moon } from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10">
+    <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-pink-900/30 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
+
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex items-center justify-between p-6 max-w-7xl mx-auto"
+        className="flex items-center justify-between p-6 max-w-7xl mx-auto relative z-10"
       >
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <CheckCircle className="w-5 h-5 text-primary-foreground" />
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-pink-500/50">
+            <Skull className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-bold tracking-tight">TodoFlow</span>
+          <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            TodoFlow
+          </span>
         </div>
         <AuthButton 
           trigger={
-            <Button size="lg" className="rounded-full px-8">
+            <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 border-0 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300">
               Get Started Free
             </Button>
           }
           dashboardTrigger={
-            <Button size="lg" variant="outline" className="rounded-full px-8">
+            <Button size="lg" variant="outline" className="rounded-full px-8 border-2 border-pink-500/50 text-pink-400 hover:bg-pink-500/20 hover:border-pink-400 transition-all duration-300">
               Open App
             </Button>
           }
@@ -34,19 +43,22 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6">
-            Organize Your Life
-            <span className="block text-primary">Effortlessly</span>
+          <h1 className="text-6xl md:text-7xl font-black tracking-tight mb-6">
+            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Organize Your Life
+            </span>
+            <span className="block text-white mt-2">Effortlessly</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            The modern todo app that adapts to your workflow. Simple, powerful, and beautifully designed to help you get things done.
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            The <span className="text-pink-400 font-semibold">dark</span> todo app that adapts to your <span className="text-purple-400 font-semibold">emo soul</span>. 
+            Simple, powerful, and beautifully designed to help you get things done in style.
           </p>
           
           <motion.div
@@ -57,13 +69,13 @@ export default function Landing() {
           >
             <AuthButton 
               trigger={
-                <Button size="lg" className="text-lg px-12 py-6 rounded-full shadow-lg hover:shadow-xl transition-all">
+                <Button size="lg" className="text-lg px-12 py-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105">
                   <Plus className="w-5 h-5 mr-2" />
                   Start Creating
                 </Button>
               }
             />
-            <Button variant="ghost" size="lg" className="text-lg px-8 py-6 rounded-full">
+            <Button variant="ghost" size="lg" className="text-lg px-8 py-6 rounded-full text-pink-400 hover:text-pink-300 hover:bg-pink-500/10 transition-all duration-300">
               Watch Demo
             </Button>
           </motion.div>
@@ -76,22 +88,22 @@ export default function Landing() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-24 relative"
         >
-          <div className="bg-card border rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto">
+          <div className="bg-black/40 backdrop-blur-sm border border-pink-500/30 rounded-3xl p-8 shadow-2xl shadow-pink-500/20 max-w-4xl mx-auto">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 p-4 bg-accent/30 rounded-xl">
-                <div className="w-5 h-5 rounded-full border-2 border-primary"></div>
-                <span className="flex-1 text-lg">Design the new landing page</span>
-                <span className="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full">High</span>
+              <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-xl border border-pink-500/30">
+                <div className="w-5 h-5 rounded-full border-2 border-pink-400 animate-pulse"></div>
+                <span className="flex-1 text-lg text-white">Design the new landing page</span>
+                <span className="text-sm bg-red-500/20 text-red-300 px-3 py-1 rounded-full border border-red-500/30">High</span>
               </div>
-              <div className="flex items-center space-x-3 p-4 bg-accent/20 rounded-xl">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span className="flex-1 text-lg line-through text-muted-foreground">Review user feedback</span>
-                <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">Medium</span>
+              <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-xl border border-purple-500/30">
+                <CheckCircle className="w-5 h-5 text-purple-400" />
+                <span className="flex-1 text-lg line-through text-gray-400">Review user feedback</span>
+                <span className="text-sm bg-green-500/20 text-green-300 px-3 py-1 rounded-full border border-green-500/30">Medium</span>
               </div>
-              <div className="flex items-center space-x-3 p-4 bg-accent/20 rounded-xl">
-                <div className="w-5 h-5 rounded-full border-2 border-muted-foreground"></div>
-                <span className="flex-1 text-lg">Update documentation</span>
-                <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Low</span>
+              <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-cyan-500/20 to-pink-500/20 rounded-xl border border-cyan-500/30">
+                <div className="w-5 h-5 rounded-full border-2 border-cyan-400 animate-pulse"></div>
+                <span className="flex-1 text-lg text-white">Update documentation</span>
+                <span className="text-sm bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-500/30">Low</span>
               </div>
             </div>
           </div>
@@ -99,18 +111,18 @@ export default function Landing() {
       </div>
 
       {/* Features Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl font-black tracking-tight mb-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
             Everything you need to stay productive
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Powerful features wrapped in a clean, intuitive interface
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Powerful features wrapped in a <span className="text-pink-400">dark</span>, <span className="text-purple-400">intuitive</span> interface
           </p>
         </motion.div>
 
@@ -119,17 +131,26 @@ export default function Landing() {
             {
               icon: <Zap className="w-8 h-8" />,
               title: "Lightning Fast",
-              description: "Add, edit, and organize tasks in seconds with our streamlined interface"
+              description: "Add, edit, and organize tasks in seconds with our streamlined interface",
+              gradient: "from-pink-500/20 to-purple-500/20",
+              border: "border-pink-500/30",
+              iconColor: "text-pink-400"
             },
             {
               icon: <Star className="w-8 h-8" />,
               title: "Priority System",
-              description: "Focus on what matters most with our intelligent priority management"
+              description: "Focus on what matters most with our intelligent priority management",
+              gradient: "from-purple-500/20 to-cyan-500/20",
+              border: "border-purple-500/30",
+              iconColor: "text-purple-400"
             },
             {
               icon: <Clock className="w-8 h-8" />,
               title: "Due Dates",
-              description: "Never miss a deadline with smart reminders and date tracking"
+              description: "Never miss a deadline with smart reminders and date tracking",
+              gradient: "from-cyan-500/20 to-pink-500/20",
+              border: "border-cyan-500/30",
+              iconColor: "text-cyan-400"
             }
           ].map((feature, index) => (
             <motion.div
@@ -137,13 +158,13 @@ export default function Landing() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-              className="text-center p-8 rounded-2xl bg-card border hover:shadow-lg transition-all"
+              className={`text-center p-8 rounded-2xl bg-gradient-to-br ${feature.gradient} border ${feature.border} hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 transform hover:scale-105`}
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary">
+              <div className={`w-16 h-16 bg-black/40 rounded-2xl flex items-center justify-center mx-auto mb-6 ${feature.iconColor} backdrop-blur-sm`}>
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -154,18 +175,18 @@ export default function Landing() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.4 }}
-        className="max-w-4xl mx-auto px-6 py-20 text-center"
+        className="max-w-4xl mx-auto px-6 py-20 text-center relative z-10"
       >
-        <div className="bg-primary/5 rounded-3xl p-12 border">
-          <h2 className="text-4xl font-bold tracking-tight mb-6">
+        <div className="bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-cyan-500/10 rounded-3xl p-12 border border-pink-500/30 backdrop-blur-sm">
+          <h2 className="text-4xl font-black tracking-tight mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
             Ready to get organized?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of users who have transformed their productivity with TodoFlow
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join thousands of users who have transformed their productivity with <span className="text-pink-400 font-semibold">TodoFlow</span>
           </p>
           <AuthButton 
             trigger={
-              <Button size="lg" className="text-lg px-12 py-6 rounded-full shadow-lg hover:shadow-xl transition-all">
+              <Button size="lg" className="text-lg px-12 py-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105">
                 <Plus className="w-5 h-5 mr-2" />
                 Get Started Now
               </Button>
@@ -175,17 +196,17 @@ export default function Landing() {
       </motion.div>
 
       {/* Footer */}
-      <footer className="border-t bg-card/50">
+      <footer className="border-t border-pink-500/20 bg-black/40 backdrop-blur-sm relative z-10">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-4 h-4 text-primary-foreground" />
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-pink-500/50">
+                <Heart className="w-4 h-4 text-white" />
               </div>
-              <span className="font-semibold">TodoFlow</span>
+              <span className="font-bold text-white">TodoFlow</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              © 2024 TodoFlow. Built with ❤️ for productivity.
+            <p className="text-sm text-gray-400">
+              © 2024 TodoFlow. Built with <span className="text-pink-400">❤️</span> for productivity.
             </p>
           </div>
         </div>
