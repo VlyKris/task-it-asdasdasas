@@ -2,16 +2,21 @@ import { AuthButton } from "@/components/auth/AuthButton";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { CheckCircle, Clock, Plus, Star, Zap, Heart, Skull, Moon } from "lucide-react";
+import { Canvas } from "@react-three/fiber";
+import { HeroGlobe } from "@/components/landing/HeroGlobe";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-pink-900/30 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <Canvas>
+          <HeroGlobe />
+        </Canvas>
       </div>
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black via-black/80 to-black" />
 
       {/* Navigation */}
       <motion.nav

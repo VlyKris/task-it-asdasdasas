@@ -28,9 +28,9 @@ interface TodoItemProps {
 }
 
 const priorityColors = {
-  low: "bg-blue-100 text-blue-700 border-blue-200",
-  medium: "bg-yellow-100 text-yellow-700 border-yellow-200",
-  high: "bg-red-100 text-red-700 border-red-200",
+  low: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
+  medium: "bg-purple-500/10 text-purple-300 border-purple-500/20",
+  high: "bg-pink-500/10 text-pink-300 border-pink-500/20",
 };
 
 export function TodoItem({ todo }: TodoItemProps) {
