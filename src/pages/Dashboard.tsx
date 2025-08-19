@@ -26,6 +26,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "convex/react";
 import { CheckCircle, Filter, Plus } from "lucide-react";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -166,9 +167,11 @@ export default function Dashboard() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    {pendingTodos.map((todo) => (
-                      <TodoItem key={todo._id} todo={todo} />
-                    ))}
+                    <AnimatePresence>
+                      {pendingTodos.map((todo) => (
+                        <TodoItem key={todo._id} todo={todo} />
+                      ))}
+                    </AnimatePresence>
                   </div>
                 )}
               </TabsContent>
@@ -186,9 +189,11 @@ export default function Dashboard() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    {completedTodos.map((todo) => (
-                      <TodoItem key={todo._id} todo={todo} />
-                    ))}
+                    <AnimatePresence>
+                      {completedTodos.map((todo) => (
+                        <TodoItem key={todo._id} todo={todo} />
+                      ))}
+                    </AnimatePresence>
                   </div>
                 )}
               </TabsContent>

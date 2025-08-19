@@ -1,6 +1,35 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
+import { animate } from "framer-motion";
 import { CheckCircle, Circle, Clock, AlertCircle } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+function Counter({
+  to,
+  className,
+}: {
+  to: number;
+  className: string;
+}) {
+  const ref = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const controls = animate(0, to, {
+      duration: 1.5,
+      ease: "easeOut",
+      onUpdate(value) {
+        node.textContent = Math.round(value).toString();
+      },
+    });
+
+    return () => controls.stop();
+  }, [to]);
+
+  return <p ref={ref} className={className} />;
+}
 
 export function TodoStats() {
   const todos = useQuery(api.todos.getTodos);
@@ -58,7 +87,7 @@ export function TodoStats() {
           <div className="flex items-center space-x-3">
             <div className={stat.color}>{stat.icon}</div>
             <div>
-              <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+              <Counter to={stat.value} className={`text-2xl font-bold ${stat.color}`} />
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </div>
           </div>

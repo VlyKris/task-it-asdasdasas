@@ -5,7 +5,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   DropdownMenu,
@@ -14,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { api } from "@/convex/_generated/api";
-import { Doc, Id } from "@/convex/_generated/dataModel";
+import { Doc } from "@/convex/_generated/dataModel";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { Calendar, Clock, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
@@ -31,6 +30,12 @@ const priorityColors = {
   low: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
   medium: "bg-purple-500/10 text-purple-300 border-purple-500/20",
   high: "bg-pink-500/10 text-pink-300 border-pink-500/20",
+};
+
+const priorityGlow = {
+  low: "hover:shadow-[0_0_20px_theme(colors.secondary/25%)]",
+  medium: "hover:shadow-[0_0_20px_theme(colors.accent/25%)]",
+  high: "hover:shadow-[0_0_20px_theme(colors.primary/25%)]",
 };
 
 export function TodoItem({ todo }: TodoItemProps) {
@@ -58,11 +63,13 @@ export function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className={`group p-4 rounded-xl border bg-card hover:shadow-md transition-all ${
-        todo.completed ? "opacity-60" : ""
+      exit={{ opacity: 0, scale: 0.9, y: -10, transition: { duration: 0.2 } }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`group p-4 rounded-xl border bg-card transition-all duration-300 ${
+        todo.completed ? "opacity-60" : priorityGlow[todo.priority]
       }`}
     >
       <div className="flex items-start space-x-3">

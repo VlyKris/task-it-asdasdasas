@@ -1,20 +1,26 @@
 import { AuthButton } from "@/components/auth/AuthButton";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, Plus, Star, Zap, Heart, Skull, Moon } from "lucide-react";
-import { Canvas } from "@react-three/fiber";
-import { HeroGlobe } from "@/components/landing/HeroGlobe";
+import { CheckCircle, Clock, Plus, Star, Zap, Heart, Skull } from "lucide-react";
 
 export default function Landing() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <Canvas>
-          <HeroGlobe />
-        </Canvas>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-50">
+        <div
+          className="absolute top-0 -left-4 w-72 h-72 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse"
+        />
+        <div
+          className="absolute top-0 -right-4 w-72 h-72 bg-pink-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        />
+        <div
+          className="absolute bottom-0 -left-4 w-72 h-72 bg-cyan-600 rounded-full mix-blend-screen filter blur-3xl animate-pulse"
+          style={{ animationDelay: "4s" }}
+        />
       </div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black via-black/80 to-black" />
 
@@ -33,7 +39,7 @@ export default function Landing() {
             TodoFlow
           </span>
         </div>
-        <AuthButton 
+        <AuthButton
           trigger={
             <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 border-0 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300">
               Get Started Free
@@ -62,17 +68,17 @@ export default function Landing() {
             <span className="block text-white mt-2">Effortlessly</span>
           </h1>
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            The <span className="text-pink-400 font-semibold">dark</span> todo app that adapts to your <span className="text-purple-400 font-semibold">emo soul</span>. 
+            The <span className="text-pink-400 font-semibold">dark</span> todo app that adapts to your <span className="text-purple-400 font-semibold">emo soul</span>.
             Simple, powerful, and beautifully designed to help you get things done in style.
           </p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <AuthButton 
+            <AuthButton
               trigger={
                 <Button size="lg" className="text-lg px-12 py-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105">
                   <Plus className="w-5 h-5 mr-2" />
@@ -189,7 +195,7 @@ export default function Landing() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of users who have transformed their productivity with <span className="text-pink-400 font-semibold">TodoFlow</span>
           </p>
-          <AuthButton 
+          <AuthButton
             trigger={
               <Button size="lg" className="text-lg px-12 py-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105">
                 <Plus className="w-5 h-5 mr-2" />
