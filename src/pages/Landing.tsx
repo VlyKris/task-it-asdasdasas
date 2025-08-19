@@ -139,14 +139,7 @@ export default function Landing() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            {
-              icon: <Zap className="w-8 h-8" />,
-              title: "Lightning Fast",
-              description: "Add, edit, and organize tasks in seconds with our streamlined interface",
-              gradient: "from-pink-500/20 to-purple-500/20",
-              border: "border-pink-500/30",
-              iconColor: "text-pink-400"
-            },
+
             {
               icon: <Star className="w-8 h-8" />,
               title: "Priority System",
@@ -182,29 +175,6 @@ export default function Landing() {
       </div>
 
       {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.4 }}
-        className="max-w-4xl mx-auto px-6 py-20 text-center relative z-10"
-      >
-        <div className="bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-cyan-500/10 rounded-3xl p-12 border border-pink-500/30 backdrop-blur-sm">
-          <h2 className="text-4xl font-black tracking-tight mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            Ready to get organized?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who have transformed their productivity with <span className="text-pink-400 font-semibold">TodoFlow</span>
-          </p>
-          <AuthButton
-            trigger={
-              <Button size="lg" className="text-lg px-12 py-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/70 transition-all duration-300 transform hover:scale-105">
-                <Plus className="w-5 h-5 mr-2" />
-                Get Started Now
-              </Button>
-            }
-          />
-        </div>
-      </motion.div>
 
       {/* Footer */}
       <footer className="border-t border-pink-500/20 bg-black/40 backdrop-blur-sm relative z-10">
