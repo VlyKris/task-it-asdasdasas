@@ -24,7 +24,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Protected } from "@/lib/protected-page";
 import { motion } from "framer-motion";
 import { useQuery } from "convex/react";
-import { CheckCircle, Filter, Plus } from "lucide-react";
+import { CheckCircle, Filter, Plus, Skull } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -44,7 +44,14 @@ export default function Dashboard() {
 
   return (
     <Protected>
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+        {/* Background Blobs */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div className="absolute top-1/4 -left-24 w-96 h-96 bg-primary rounded-full mix-blend-screen filter blur-3xl animate-pulse"/>
+            <div className="absolute top-0 -right-24 w-96 h-96 bg-secondary rounded-full mix-blend-screen filter blur-3xl animate-pulse" style={{ animationDelay: "2s" }}/>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent rounded-full mix-blend-screen filter blur-3xl animate-pulse" style={{ animationDelay: "4s" }}/>
+        </div>
+
         {/* Header */}
         <motion.header
           initial={{ opacity: 0, y: -20 }}
@@ -55,11 +62,13 @@ export default function Dashboard() {
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-primary-foreground" />
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-pink-500/50">
+                    <Skull className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-xl font-bold tracking-tight">TodoFlow</span>
+                  <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    TodoFlow
+                  </span>
                 </div>
                 <div className="hidden md:block">
                   <p className="text-sm text-muted-foreground">
@@ -91,7 +100,7 @@ export default function Dashboard() {
         </motion.header>
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6 py-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
